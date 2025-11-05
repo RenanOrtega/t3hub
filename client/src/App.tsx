@@ -1,10 +1,13 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Suspense } from 'react';
-import { Layout } from './components/layout';
-import { ErrorBoundary } from './components/error-boundary';
-import { HomePage } from './pages/home-page';
-import { PlayersPage } from './pages/players-page';
-import { ScrimBoardPage } from './pages/scrim-board-page';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Suspense } from "react";
+import { Layout } from "./components/layout";
+import { ErrorBoundary } from "./components/error-boundary";
+import { ProtectedRoute } from "./components/protected-route";
+import { HomePage } from "./pages/home-page";
+import { PlayersPage } from "./pages/players-page";
+import { ScrimBoardPage } from "./pages/scrim-board-page";
+import { LoginPage } from "./pages/login-page";
+import { AuthCallbackPage } from "./pages/auth-callback-page";
 
 function LoadingFallback() {
   return (
@@ -21,9 +24,32 @@ export function App() {
         <Layout>
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/players" element={<PlayersPage />} />
-              <Route path="/scrims" element={<ScrimBoardPage />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <HomePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/players"
+                element={
+                  <ProtectedRoute>
+                    <PlayersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/scrims"
+                element={
+                  <ProtectedRoute>
+                    <ScrimBoardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/auth/callback" element={<AuthCallbackPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

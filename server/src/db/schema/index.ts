@@ -1,4 +1,5 @@
 export * from './users';
+export * from './oauth-accounts';
 export * from './organizations';
 export * from './teams';
 export * from './players';
