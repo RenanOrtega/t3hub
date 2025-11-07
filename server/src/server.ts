@@ -9,6 +9,7 @@ import { playersRoutes } from "./routes/players";
 import { scrimSlotsRoutes } from "./routes/scrim-slots";
 import { scrimRequestsRoutes } from "./routes/scrim-requests";
 import { authRoutes } from "./routes/auth";
+import { riotVerificationRoutes } from "./routes/riot-verification";
 import { ZodError } from "zod";
 
 const PORT = parseInt(process.env.PORT ?? "3000", 10);
@@ -44,6 +45,7 @@ fastify.setErrorHandler((error, _request, reply) => {
 
 // 🚀 Rotas
 await fastify.register(authRoutes, { prefix: "/api" });
+await fastify.register(riotVerificationRoutes, { prefix: "/api" });
 await fastify.register(playersRoutes, { prefix: "/api" });
 await fastify.register(scrimSlotsRoutes, { prefix: "/api" });
 await fastify.register(scrimRequestsRoutes, { prefix: "/api" });

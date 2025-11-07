@@ -1,0 +1,1 @@
+ALTER TABLE "players" DROP COLUMN IF EXISTS "in_game_name";

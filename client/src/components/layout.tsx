@@ -1,11 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
-import { LogOut, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useAuth } from '../hooks/use-auth';
+import { Link, useLocation } from "react-router-dom";
+import { LogOut, User } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useAuth } from "../hooks/use-auth";
 
 const NAV_ITEMS = [
-  { href: '/players', label: 'Players' },
-  { href: '/scrims', label: 'Scrim Board' },
+  { href: "/players", label: "Players" },
+  { href: "/scrims", label: "Scrim Board" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -27,8 +27,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     key={item.href}
                     to={item.href}
                     className={cn(
-                      'text-sm font-medium transition-colors hover:text-primary',
-                      location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                      "text-sm font-medium transition-colors hover:text-primary",
+                      location.pathname === item.href
+                        ? "text-primary"
+                        : "text-muted-foreground"
                     )}
                   >
                     {item.label}
@@ -49,7 +51,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         <User className="h-4 w-4 text-primary" />
                       </div>
                     )}
-                    <span className="text-sm font-medium">{user.displayName ?? user.email}</span>
+                    <span className="text-sm font-medium">
+                      {user.displayName ?? user.email}
+                    </span>
                   </div>
                   <button
                     type="button"

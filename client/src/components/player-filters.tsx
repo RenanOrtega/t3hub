@@ -6,17 +6,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { RANKED_TIERS, type RankedTier } from '../../../shared/types/rank';
 
 type PlayerFiltersProps = {
   selectedLane: Lane | 'all';
-  minElo: string;
-  maxElo: string;
+  minTier: RankedTier | 'all';
+  maxTier: RankedTier | 'all';
   onLaneChange: (lane: Lane | 'all') => void;
-  onMinEloChange: (elo: string) => void;
-  onMaxEloChange: (elo: string) => void;
+  onMinTierChange: (tier: RankedTier | 'all') => void;
+  onMaxTierChange: (tier: RankedTier | 'all') => void;
   onReset: () => void;
 };
 
@@ -24,11 +24,11 @@ const LANES = Object.values(Lane);
 
 export function PlayerFilters({
   selectedLane,
-  minElo,
-  maxElo,
+  minTier,
+  maxTier,
   onLaneChange,
-  onMinEloChange,
-  onMaxEloChange,
+  onMinTierChange,
+  onMaxTierChange,
   onReset,
 }: PlayerFiltersProps) {
   return (
@@ -53,23 +53,37 @@ export function PlayerFilters({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Min Elo</label>
-            <Input
-              type="number"
-              placeholder="1800"
-              value={minElo}
-              onChange={(e) => onMinEloChange(e.target.value)}
-            />
+            <label className="text-sm font-medium">Min Rank</label>
+            <Select value={minTier} onValueChange={onMinTierChange}>
+              <SelectTrigger>
+                <SelectValue placeholder="Any" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Any</SelectItem>
+                {RANKED_TIERS.map((tier) => (
+                  <SelectItem key={tier} value={tier}>
+                    {tier}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Max Elo</label>
-            <Input
-              type="number"
-              placeholder="2800"
-              value={maxElo}
-              onChange={(e) => onMaxEloChange(e.target.value)}
-            />
+            <label className="text-sm font-medium">Max Rank</label>
+            <Select value={maxTier} onValueChange={onMaxTierChange}>
+              <SelectTrigger>
+                <SelectValue placeholder="Any" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Any</SelectItem>
+                {RANKED_TIERS.map((tier) => (
+                  <SelectItem key={tier} value={tier}>
+                    {tier}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="flex items-end">

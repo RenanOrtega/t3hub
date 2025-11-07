@@ -1,0 +1,8 @@
+{
+  "name": "@t3hub/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./types/rank": "./types/rank.ts"
+  }
+}

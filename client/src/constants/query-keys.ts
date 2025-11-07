@@ -10,4 +10,5 @@ export const QueryKeys = {
   SCRIM_SLOT: 'scrimSlot',
   SCRIM_REQUESTS: 'scrimRequests',
   SCRIM_REQUEST: 'scrimRequest',
+  RIOT_VERIFICATION_STATUS: 'riotVerificationStatus',
 } as const;

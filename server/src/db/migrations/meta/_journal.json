@@ -15,6 +15,55 @@
       "when": 1762347460795,
       "tag": "0001_vengeful_blue_marvel",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762369046820,
+      "tag": "0002_flippant_firelord",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1762379519508,
+      "tag": "0003_premium_rogue",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1762383479165,
+      "tag": "0004_serious_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1762384281414,
+      "tag": "0005_lean_donald_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1762384332602,
+      "tag": "0006_loud_lilandra",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1762384498537,
+      "tag": "0007_salty_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1762386649749,
+      "tag": "0008_curvy_wendigo",
+      "breakpoints": true
     }
   ]
 }

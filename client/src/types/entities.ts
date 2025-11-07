@@ -5,7 +5,8 @@ import type {
   RosterStatus,
   ScrimSlotStatus,
   ScrimRequestStatus,
-} from '@/constants/enums';
+} from "@/constants/enums";
+import type { Rank } from "../../../shared/types/rank";
 
 export type User = {
   id: string;
@@ -25,20 +26,31 @@ export type Team = {
   id: string;
   organizationId: string;
   teamName: string;
-  eloAverage: number;
+  averageRank?: Rank;
   rosterStatus: RosterStatus;
 };
 
 export type Player = {
   id: string;
   userId: string;
-  inGameName: string;
-  primaryLane: Lane;
-  secondaryLane: Lane;
-  currentElo: number;
-  peakElo: number;
-  championPool: string[];
-  availabilityStatus: AvailabilityStatus;
+  puuid?: string;
+  summonerId?: string;
+  gameName?: string;
+  tagLine?: string;
+  region: string;
+  profileIconId?: number;
+  summonerLevel?: number;
+  verifiedAt?: Date | string;
+  inGameName?: string;
+  primaryLane?: Lane;
+  secondaryLane?: Lane;
+  currentElo?: Rank;
+  peakElo?: Rank;
+  championPool?: string[];
+  availabilityStatus?: AvailabilityStatus;
+  discordTag?: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 };
 
 export type Roster = {
@@ -54,8 +66,8 @@ export type ScrimSlot = {
   dateTimeStart: Date;
   durationMinutes: number;
   status: ScrimSlotStatus;
-  minEloRequired: number;
-  maxEloRequired: number;
+  minRankRequired: Rank;
+  maxRankRequired: Rank;
 };
 
 export type ScrimRequest = {

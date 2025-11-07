@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { ScrimSlot } from '@/types/entities';
 import { ScrimSlotStatus } from '@/constants/enums';
+import { formatRankShort, getTierColor } from '../../../shared/types/rank';
 
 const STATUS_VARIANT_MAP: Record<ScrimSlotStatus, 'default' | 'secondary' | 'destructive' | 'outline'> = {
   [ScrimSlotStatus.OPEN]: 'default',
@@ -48,9 +49,11 @@ function ScrimSlotCard({ slot }: { slot: ScrimSlot }) {
             <CardTitle className="text-lg">
               {hostOrg?.name} - {hostTeam?.teamName}
             </CardTitle>
-            <p className="text-sm text-muted-foreground mt-1">
-              Team Elo: {hostTeam?.eloAverage}
-            </p>
+            {hostTeam?.averageRank && (
+              <p className={`text-sm mt-1 ${getTierColor(hostTeam.averageRank.tier)}`}>
+                Team Rank: {formatRankShort(hostTeam.averageRank)}
+              </p>
+            )}
           </div>
           <Badge variant={STATUS_VARIANT_MAP[slot.status]}>
             {slot.status}
@@ -67,9 +70,15 @@ function ScrimSlotCard({ slot }: { slot: ScrimSlot }) {
           <span className="font-medium">{slot.durationMinutes} minutes</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-muted-foreground">Elo Range:</span>
+          <span className="text-muted-foreground">Rank Range:</span>
           <span className="font-medium">
-            {slot.minEloRequired} - {slot.maxEloRequired}
+            <span className={getTierColor(slot.minRankRequired.tier)}>
+              {formatRankShort(slot.minRankRequired)}
+            </span>
+            {' - '}
+            <span className={getTierColor(slot.maxRankRequired.tier)}>
+              {formatRankShort(slot.maxRankRequired)}
+            </span>
           </span>
         </div>
       </CardContent>

@@ -8,6 +8,8 @@ import { PlayersPage } from "./pages/players-page";
 import { ScrimBoardPage } from "./pages/scrim-board-page";
 import { LoginPage } from "./pages/login-page";
 import { AuthCallbackPage } from "./pages/auth-callback-page";
+import { ProfilePage } from "./pages/profile-page";
+import { OnboardingPage } from "./pages/onboarding-page";
 
 function LoadingFallback() {
   return (
@@ -40,11 +42,20 @@ export function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/profile/:playerId" element={<ProfilePage />} />
               <Route
                 path="/scrims"
                 element={
                   <ProtectedRoute>
                     <ScrimBoardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/onboarding"
+                element={
+                  <ProtectedRoute>
+                    <OnboardingPage />
                   </ProtectedRoute>
                 }
               />
