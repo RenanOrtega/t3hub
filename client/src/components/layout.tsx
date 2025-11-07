@@ -4,8 +4,10 @@ import { cn } from "@/lib/utils";
 import { useAuth } from "../hooks/use-auth";
 
 const NAV_ITEMS = [
+  { href: "/profile", label: "Profile" },
   { href: "/players", label: "Players" },
-  { href: "/scrims", label: "Scrim Board" },
+  { href: "/organizations", label: "Organizations" },
+  { href: "/scrims", label: "Scrims" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

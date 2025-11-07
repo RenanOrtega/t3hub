@@ -42,9 +42,10 @@ export function ProfilePage() {
     );
   }
 
-  const displayName = player.gameName && player.tagLine
-    ? `${player.gameName}#${player.tagLine}`
-    : player.inGameName || "Unknown Player";
+  const displayName =
+    player.gameName && player.tagLine
+      ? `${player.gameName}#${player.tagLine}`
+      : player.inGameName || "Unknown Player";
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">

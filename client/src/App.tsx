@@ -5,6 +5,11 @@ import { ErrorBoundary } from "./components/error-boundary";
 import { ProtectedRoute } from "./components/protected-route";
 import { HomePage } from "./pages/home-page";
 import { PlayersPage } from "./pages/players-page";
+import { MyProfilePage } from "./pages/my-profile-page";
+import { OrganizationsPage } from "./pages/organizations-page";
+import { OrganizationDetailPage } from "./pages/organization-detail-page";
+import { OrganizationFormPage } from "./pages/organization-form-page";
+import { TeamFormPage } from "./pages/team-form-page";
 import { ScrimBoardPage } from "./pages/scrim-board-page";
 import { LoginPage } from "./pages/login-page";
 import { AuthCallbackPage } from "./pages/auth-callback-page";
@@ -42,7 +47,63 @@ export function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <MyProfilePage />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/profile/:playerId" element={<ProfilePage />} />
+              <Route
+                path="/my-organizations/new"
+                element={
+                  <ProtectedRoute>
+                    <OrganizationFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/my-organizations/:organizationId/edit"
+                element={
+                  <ProtectedRoute>
+                    <OrganizationFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/organizations"
+                element={
+                  <ProtectedRoute>
+                    <OrganizationsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/organizations/:organizationId"
+                element={
+                  <ProtectedRoute>
+                    <OrganizationDetailPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/organizations/:organizationId/teams/new"
+                element={
+                  <ProtectedRoute>
+                    <TeamFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/teams/:teamId/edit"
+                element={
+                  <ProtectedRoute>
+                    <TeamFormPage />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="/scrims"
                 element={
