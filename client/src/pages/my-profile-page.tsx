@@ -138,7 +138,7 @@ export function MyProfilePage() {
               ))}
             </div>
             {myOrganizations.length > 3 && (
-              <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-4 w-12 bg-linear-to-l from-background to-transparent pointer-events-none" />
             )}
           </div>
         ) : (
